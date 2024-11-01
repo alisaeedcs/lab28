@@ -1,6 +1,7 @@
 //comsc-210 | ali saeed | lab 28
 //ide used: vs code
 //back from break
+//think im done
 
 #include <iostream>
 #include <numeric>
@@ -104,7 +105,7 @@ int main() {
                 reverse_order(trip);
                 break;
             case 11:
-                cout << "Displaying all goats";
+                cout << "Displaying all goats\n";
                 display_trip(trip);
                 break;
             default:
@@ -280,7 +281,6 @@ void reverse_order(list<Goat> &trip) {
         cout << "No goats on trip\n";
         return;
     }
-
     trip.reverse();
     cout << "Order of goats has been reversed.\n";
 }

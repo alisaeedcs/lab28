@@ -106,6 +106,7 @@ int main() {
             case 11:
                 cout << "Displaying all goats";
                 display_trip(trip);
+                break;
             default:
                 cout << "Invalid selection.\n";
                 break;
