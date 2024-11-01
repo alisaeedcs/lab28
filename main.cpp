@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 #include <iomanip>
 #include <list>
 #include "Goat.h"
@@ -175,9 +176,33 @@ void sort_goats(list<Goat> &trip) {
     cout << "Goats sorted by age\n";
 }
 
-void shuffle_goats(list<Goat> & trip);
-void delete_all_goats(list<Goat> &trip);
-void goats_with_age(list<Goat> &trip);
+void shuffle_goats(list<Goat> & trip) {
+    if (trip.empty()) {
+        cout << "No goats on trip\n";
+        return;
+    }
+
+    vector<Goat> temp(trip.begin(), trip.end());
+    shuffle();
+}
+
+void delete_all_goats(list<Goat> &trip) {
+     if (trip.empty()) {
+        cout << "List already empty\n";
+        return;
+    }
+    trip.clear();
+    cout << "All goats deleted. New trip size: " << trip.size() << endl;
+}
+void goats_with_age(list<Goat> &trip) {
+    if (trip.empty()) {
+        cout << "No goats on trip\n";
+        return;
+    }
+    int age;
+    cout << "Age of goats to display: ";
+}
+
 void goats_with_color(list<Goat> &trip);
 void oldest_goat(list<Goat> &trip);
 void average_age(list<Goat> &trip);
