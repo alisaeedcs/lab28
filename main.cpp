@@ -2,6 +2,7 @@
 //ide used: vs code
 
 #include <iostream>
+#include <numeric>
 #include <fstream>
 #include <algorithm>
 #include <iomanip>
@@ -242,7 +243,15 @@ void oldest_goat(list<Goat> &trip) {
         return;
     }
     vector<Goat> temp(trip.begin(), trip.end());
-    
+
 }
-void average_age(list<Goat> &trip);
+
+void average_age(list<Goat> &trip) {
+    if (trip.empty()) {
+        cout << "No goats on trip\n";
+        return;
+    }
+    int total = accumulate(trip.begin(), trip.end(), 0, [](int sum, const Goat& goat) {return sum + goat.get_age();});
+    cout << "Average age: " << static_cast<double>(total) / trip.size();
+}
 void reverse_order(list<Goat> &trip); 
