@@ -66,12 +66,26 @@ int main() {
                 delete_goat(trip);
                 break;
             case 3:    
-                cout << "Displaying goat data.\n";
-                display_trip(trip);
+                cout << "Sorting goats by age.\n";
+                sort_goats(trip);
                 break;
             case 4:
                 break;
-            case
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
+            case 10:
+                break;
+            case 11:
+                cout << "Displaying all goats";
+                display_trip(trip);
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -100,7 +114,7 @@ int main_menu() {
     cout << "Choice --> ";
     int choice;
     cin >> choice;
-    while (choice < 1 || choice > 4) {
+    while (choice < 1 || choice > 12) {
         cout << "Invalid, again --> ";
         cin >> choice;
     }
@@ -148,3 +162,20 @@ int select_goat(list<Goat> trp) {
     }
     return input;
 }
+
+void sort_goats(list<Goat> &trip) {
+    if (trip.empty()) {
+        cout << "No goats on trip\n";
+        return;
+    }
+    trip.sort([](const Goat& a, const Goat& b) { return a.get_age() < b.get_age();}); 
+    cout << "Goats sorted by age\n";
+}
+
+void shuffle_goats(list<Goat> & trip);
+void delete_all_goats(list<Goat> &trip);
+void goats_with_age(list<Goat> &trip);
+void goats_with_color(list<Goat> &trip);
+void oldest_goat(list<Goat> &trip);
+void average_age(list<Goat> &trip);
+void reverse_order(list<Goat> &trip); 
