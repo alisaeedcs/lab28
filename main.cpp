@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <numeric>
+#include <random>
 #include <fstream>
 #include <algorithm>
 #include <iomanip>
@@ -27,6 +28,7 @@ void goats_with_color(list<Goat> &trip);
 void oldest_goat(list<Goat> &trip);
 void average_age(list<Goat> &trip);
 void reverse_order(list<Goat> &trip);
+
 
 void display_trip(list<Goat> trip);
 int main_menu();
@@ -200,8 +202,13 @@ void shuffle_goats(list<Goat> & trip) {
         cout << "No goats on trip\n";
         return;
     }
-
     vector<Goat> temp(trip.begin(), trip.end());
+
+    srand(time(0));
+    shuffle(temp.begin(), temp.end(), default_random_engine(rand()));
+
+    trip.assign(temp.begin(), temp.end());
+    cout << "Goats have been shuffled\n";
 }
 
 void delete_all_goats(list<Goat> &trip) {
