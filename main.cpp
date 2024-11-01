@@ -243,8 +243,12 @@ void oldest_goat(list<Goat> &trip) {
         cout << "No goats on trip\n";
         return;
     }
-    vector<Goat> temp(trip.begin(), trip.end());
+    
+    sort_goats(trip);
 
+    auto oldest = prev(trip.end());
+
+    cout << "Oldest Goat: " << oldest->get_name() << " [" << oldest->get_age() << ", " << oldest->get_color() << "]\n";
 }
 
 void average_age(list<Goat> &trip) {
@@ -255,4 +259,12 @@ void average_age(list<Goat> &trip) {
     int total = accumulate(trip.begin(), trip.end(), 0, [](int sum, const Goat& goat) {return sum + goat.get_age();});
     cout << "Average age: " << static_cast<double>(total) / trip.size();
 }
-void reverse_order(list<Goat> &trip); 
+void reverse_order(list<Goat> &trip) {
+    if (trip.empty()) {
+        cout << "No goats on trip\n";
+        return;
+    }
+
+    trip.reverse();
+    cout << "Order of goats has been reversed.\n";
+}
