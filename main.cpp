@@ -183,7 +183,6 @@ void shuffle_goats(list<Goat> & trip) {
     }
 
     vector<Goat> temp(trip.begin(), trip.end());
-    shuffle();
 }
 
 void delete_all_goats(list<Goat> &trip) {
@@ -194,6 +193,7 @@ void delete_all_goats(list<Goat> &trip) {
     trip.clear();
     cout << "All goats deleted. New trip size: " << trip.size() << endl;
 }
+
 void goats_with_age(list<Goat> &trip) {
     if (trip.empty()) {
         cout << "No goats on trip\n";
@@ -201,9 +201,48 @@ void goats_with_age(list<Goat> &trip) {
     }
     int age;
     cout << "Age of goats to display: ";
+    cin >> age;
+    cout << "Goats: \n";
+    bool fits_desc = false;
+    for (const auto& goat : trip) {
+        if (goat.get_age() == age) {
+            cout << "\t" << goat.get_name() << " [" << goat.get_color() << "]\n";
+            fits_desc = true;
+        }
+    }
+    if (!fits_desc) {
+        cout << "No goats with age " << age << endl;
+    }
 }
 
-void goats_with_color(list<Goat> &trip);
-void oldest_goat(list<Goat> &trip);
+void goats_with_color(list<Goat> &trip) {
+     if (trip.empty()) {
+        cout << "No goats on trip\n";
+        return;
+    }
+    string color;
+    cout << "Color of goats to display: ";
+    cin >> color;
+    cout << "Goats: \n";
+    bool fits_desc = false;
+    for (const auto& goat : trip) {
+        if (goat.get_color() == color) {
+            cout << "\t" << goat.get_name() << " [" << goat.get_color() << "]\n";
+            fits_desc = true;
+        }
+    }
+    if (!fits_desc) {
+        cout << "No goats with color " << color << endl;
+    }
+}
+
+void oldest_goat(list<Goat> &trip) {
+    if (trip.empty()) {
+        cout << "No goats on trip\n";
+        return;
+    }
+    vector<Goat> temp(trip.begin(), trip.end());
+    
+}
 void average_age(list<Goat> &trip);
 void reverse_order(list<Goat> &trip); 
