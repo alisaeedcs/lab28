@@ -1,7 +1,5 @@
 //comsc-210 | ali saeed | lab 28
 //ide used: vs code
-//back from break
-//think im done
 
 #include <iostream>
 #include <numeric>
@@ -188,6 +186,7 @@ int select_goat(list<Goat> trp) {
     return input;
 }
 
+//sort by age least to most
 void sort_goats(list<Goat> &trip) {
     if (trip.empty()) {
         cout << "No goats on trip\n";
@@ -207,7 +206,7 @@ void shuffle_goats(list<Goat> & trip) {
     srand(time(0));
     shuffle(temp.begin(), temp.end(), default_random_engine(rand()));
 
-    trip.assign(temp.begin(), temp.end());
+    trip.assign(temp.begin(), temp.end()); //shuffle
     cout << "Goats have been shuffled\n";
 }
 
@@ -216,7 +215,7 @@ void delete_all_goats(list<Goat> &trip) {
         cout << "List already empty\n";
         return;
     }
-    trip.clear();
+    trip.clear(); //clear list
     cout << "All goats deleted. New trip size: " << trip.size() << endl;
 }
 
@@ -231,6 +230,7 @@ void goats_with_age(list<Goat> &trip) {
     cout << "Goats: \n";
     bool fits_desc = false;
     for (const auto& goat : trip) {
+        //if they fit age
         if (goat.get_age() == age) {
             cout << "\t" << goat.get_name() << " [" << goat.get_color() << "]\n";
             fits_desc = true;
@@ -252,6 +252,7 @@ void goats_with_color(list<Goat> &trip) {
     cout << "Goats: \n";
     bool fits_desc = false;
     for (const auto& goat : trip) {
+        //if they fit description
         if (goat.get_color() == color) {
             cout << "\t" << goat.get_name() << " [" << goat.get_color() << "]\n";
             fits_desc = true;
@@ -268,8 +269,10 @@ void oldest_goat(list<Goat> &trip) {
         return;
     }
     
+    //sort by age
     sort_goats(trip);
 
+    //last goat in list
     auto oldest = prev(trip.end());
 
     cout << "Oldest Goat: " << oldest->get_name() << " [" << oldest->get_age() << ", " << oldest->get_color() << "]\n";
@@ -280,6 +283,7 @@ void average_age(list<Goat> &trip) {
         cout << "No goats on trip\n";
         return;
     }
+    //total of all ages in int
     int total = accumulate(trip.begin(), trip.end(), 0, [](int sum, const Goat& goat) {return sum + goat.get_age();});
     cout << "Average age: " << static_cast<double>(total) / trip.size();
 }
@@ -288,6 +292,7 @@ void reverse_order(list<Goat> &trip) {
         cout << "No goats on trip\n";
         return;
     }
+    //reverse
     trip.reverse();
     cout << "Order of goats has been reversed.\n";
 }
